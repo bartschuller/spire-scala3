@@ -73,6 +73,19 @@ trait Order[@sp A] extends PartialOrder[A] { self =>
    */
   override def gt(x: A, y: A): Boolean =
     compare(x, y) > 0
+
+  /**
+   * Returns the smaller of `x` and `y`.
+   */
+  def min(x: A, y: A): A =
+    if (compare(x, y) <= 0) x else y
+
+  /**
+   * Returns the larger of `x` and `y`.
+   */
+  def max(x: A, y: A): A =
+    if (compare(x, y) >= 0) x else y
+
 }
 
 abstract class OrderFunctions[O[T] <: Order[T]] extends PartialOrderFunctions[O] {

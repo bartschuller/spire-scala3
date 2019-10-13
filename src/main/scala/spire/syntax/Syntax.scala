@@ -25,6 +25,8 @@ trait PartialOrderSyntax extends EqSyntax {
 trait OrderSyntax extends PartialOrderSyntax {
   given orderSyntax[A:Order]: {
     inline def (lhs: A) compare(rhs: A): Int = Order[A].compare(lhs, rhs)
+    inline def (lhs: A) min(rhs: A): A = Order[A].min(lhs, rhs)
+    inline def (lhs: A) max(rhs: A): A = Order[A].max(lhs, rhs)
   }
 }
 
